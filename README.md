@@ -6,7 +6,7 @@ Fichiers : `index.html` (site complet, images incluses), `robots.txt`, `sitemap.
 1. Sur le compte GitHub, **New repository** → nom : `msp-les-bruyeres` → **Public** → Create.
 2. **Add file → Upload files** : déposer `index.html`, `robots.txt`, `sitemap.xml` → **Commit changes**.
 3. **Settings → Pages** → *Deploy from a branch* → `main` / `(root)` → **Save**.
-4. Après 1–2 minutes : `https://coorsante.github.io/msp-les-bruyeres/` (adapter `robots.txt`, `sitemap.xml` et les balises `canonical` / `og:url` de `index.html` si le compte est différent).
+4. En ligne : `https://www.coorsante.fr/msp-les-bruyeres/` (domaine personnalisé du compte coorsante).
 
 ## Être trouvé sur Google
 - **Google Search Console** : ajouter le site, soumettre `sitemap.xml`.
