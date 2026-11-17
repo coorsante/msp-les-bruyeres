@@ -425,7 +425,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
 
     <div class="quick" aria-label="Accès rapide">
       <a href="#rdv"><span class="ico">📅</span><strong>Rendez-vous</strong><span>03 21 93 43 43 ou en ligne</span></a>
-      <a href="#ipa"><span class="ico">🩺</span><strong>IPA</strong><span>Tous les lundis après-midi</span></a>
+      <a href="#ipa"><span class="ico">🩺</span><strong>IPA</strong><span>Tous les vendredis après-midi</span></a>
       <a href="#equipe" data-filter="diet"><span class="ico">🥕</span><strong>Diététicienne</strong><span>1<sup>er</sup> et 3<sup>e</sup> jeudi du mois</span></a>
       <a href="#localisation"><span class="ico">📍</span><strong>Nous trouver</strong><span>84 RD 943, Racquinghem</span></a>
       <a class="urg" href="tel:15"><span class="ico">🚑</span><strong>Urgence</strong><span>En dehors des horaires : appelez le 15</span></a>
@@ -515,7 +515,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
       <article class="news reveal" style="--c:var(--teal-d)">
         <span class="tag">Nouveau métier</span>
         <h3>Une infirmière en pratique avancée</h3>
-        <p>Tous les lundis après-midi, l'IPA assure le suivi des patients atteints de maladies chroniques, en lien étroit avec votre médecin traitant.</p>
+        <p>Tous les vendredis après-midi, l'IPA assure le suivi des patients atteints de maladies chroniques, en lien étroit avec votre médecin traitant. Les rendez-vous se prennent sur Doctolib.</p>
         <button class="lk" data-img="ipa">Voir l'affiche</button>
       </article>
       <article class="news reveal" style="--c:#7c4dc4">
@@ -560,7 +560,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
     <h2 id="ipa-title" style="color:var(--blue)">Ma prise en charge par l'infirmière en pratique avancée</h2>
     <div class="ipa-grid">
       <div class="ipa-card reveal">
-        <span class="when"><i></i>Tous les lundis après-midi</span>
+        <span class="when"><i></i>Tous les vendredis après-midi</span>
         <h3>Mme Anaïs Pouille Boddaert</h3>
         <p>Infirmière en pratique avancée (IPA), elle assure le <strong>suivi clinique des patients atteints de maladies chroniques ou en situation complexe</strong>, en étroite collaboration avec les médecins de la maison de santé.</p>
         <p>Elle est aussi infirmière de santé publique dans le cadre du dispositif <strong>Asalée</strong>.</p>
@@ -571,7 +571,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
         <ol class="timeline" id="timeline">
           <span class="fill" aria-hidden="true"></span>
           <li><b>1</b><p>J'accepte d'être suivi(e) par l'IPA, qui collabore avec mon médecin traitant, et je donne mon accord oral à ce dernier.</p></li>
-          <li><b>2</b><p>Mon médecin traitant me donne rendez-vous avec l'IPA pour ma prochaine consultation de suivi.</p></li>
+          <li><b>2</b><p>Sur orientation de mon médecin traitant, je prends rendez-vous avec l'IPA sur Doctolib pour ma prochaine consultation de suivi.</p></li>
           <li><b>3</b><p>L'IPA me reçoit en consultation, m'examine, renouvelle mon traitement et peut prescrire des examens complémentaires. Elle informe mon médecin traitant des changements notables ou, si besoin, me programme un rendez-vous avec lui.</p></li>
           <li><b>4</b><p>Je peux à tout moment décider de ne plus être suivi(e) par l'IPA. J'en informe simplement mon médecin traitant.</p></li>
         </ol>
@@ -593,6 +593,12 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
       <input id="q" type="search" placeholder="Chercher un professionnel par son nom…" autocomplete="off">
     </div>
     <div class="chips" id="chips" role="group" aria-label="Filtrer par profession"></div>
+    <template id="junior-info">
+      <aside class="callout" aria-labelledby="junior-title">
+        <h4 id="junior-title">Qu’est-ce qu’un docteur junior ?</h4>
+        <p>Un docteur junior en médecine générale est un médecin en dernière année de formation. Il reçoit les patients en consultation avec une autonomie progressive, sous la supervision d’un médecin généraliste maître de stage, qu’il peut solliciter si nécessaire.</p>
+      </aside>
+    </template>
     <div id="groups"></div>
     <p class="empty" id="empty">Aucun professionnel ne correspond à votre recherche.</p>
   </div>
@@ -862,9 +868,10 @@ const TEAM = [
   {id:"med", label:"Médecins généralistes", rdv:"03 21 93 43 43 · en ligne via Tempora RDV", people:[
     {n:"Dr Christelle Breyne", t:"03 21 93 43 43", s:1, tp:1},
     {n:"Dr Christian Cuvelier", t:"03 21 93 43 43", s:1, tp:1},
-    {n:"Dr Robin Tillie", t:"03 21 93 43 43", s:1, tp:1}]},
-  {id:"ipa", label:"Infirmière en pratique avancée", rdv:"Le lundi après-midi · sur orientation de votre médecin traitant", people:[
-    {n:"Mme Anaïs Pouille Boddaert", job:"IPA · infirmière de santé publique Asalée", p:"Présente tous les lundis après-midi", t:"06 74 97 47 10", note:"Rendez-vous donné par votre médecin traitant", s:1}]},
+    {n:"Dr Robin Tillie", t:"03 21 93 43 43", s:1, tp:1},
+    {n:"Dr Pierre Le Tiec", job:"Docteur junior en médecine générale"}]},
+  {id:"ipa", label:"Infirmière en pratique avancée", rdv:"Le vendredi après-midi · rendez-vous sur Doctolib", people:[
+    {n:"Mme Anaïs Pouille Boddaert", job:"IPA · infirmière de santé publique Asalée", p:"Présente tous les vendredis après-midi", t:"06 74 97 47 10", note:"Rendez-vous sur Doctolib", s:1}]},
   {id:"ide", label:"Infirmières libérales", rdv:"Rendez-vous par téléphone", people:[
     {n:"Mme Laurianne Celers-Blanquart", t:"06 49 01 82 28"},
     {n:"Mme Cécile Sepieter", t:"06 03 99 65 61"}]},
@@ -904,7 +911,7 @@ function render(){
   const term=norm(q.value.trim());let shown=0;groups.innerHTML="";
   TEAM.forEach(g=>{
     if(current.size&&!current.has(g.id))return;
-    const ppl=g.people.filter(p=>!term||norm(p.n).includes(term)||norm(g.label).includes(term));
+    const ppl=g.people.filter(p=>!term||norm(p.n).includes(term)||norm(p.job||JOB[g.id]).includes(term)||norm(g.label).includes(term));
     if(!ppl.length)return;shown+=ppl.length;
     const sec=document.createElement("div");sec.className="group";sec.style.setProperty("--c",COL[g.id]);
     sec.innerHTML=`<div class="group-head"><h3><span class="gi" aria-hidden="true">${ICON[g.id]}</span>${esc(g.label)}</h3><span class="rdv">${esc(g.rdv)}</span></div><div class="cards">${ppl.map(p=>`
@@ -919,7 +926,7 @@ function render(){
           ${p.t?`<a href="tel:+33${p.t.replace(/\s/g,"").slice(1)}">☎ ${esc(p.t)}</a>`:""}
           ${p.m?`<a href="mailto:${p.m}">✉ ${esc(p.m)}</a>`:""}
         </div>
-      </article>`).join("")}</div>`;
+      </article>`).join("")}</div>${g.id === "med" ? document.getElementById("junior-info").innerHTML : ""}`;
     groups.appendChild(sec);
   });
   document.getElementById("empty").style.display=shown?"none":"block";
