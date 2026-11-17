@@ -194,14 +194,9 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(247,251,250,.94);bac
 @media(max-width:860px){.proj-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}}
 
 /* IPA */
-.ipa{background:linear-gradient(135deg,#eaf0fb 0%,#e3f4f4 100%);position:relative;overflow:hidden}
-.ipa-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;margin-top:28px;align-items:start}
-.ipa-card{background:#fff;border-radius:20px;padding:26px;box-shadow:var(--shadow)}
-.ipa-card h3{color:var(--blue)}
 .when{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-weight:800;font-size:.9rem;padding:7px 16px;border-radius:999px;margin-bottom:14px}
 .when i{width:10px;height:10px;border-radius:50%;background:#9fe7ea;display:inline-block;animation:pulseG 1.6s infinite}
 @keyframes pulseG{0%,100%{box-shadow:0 0 0 0 rgba(159,231,234,.9)}50%{box-shadow:0 0 0 6px rgba(159,231,234,0)}}
-.timeline{list-style:none;margin:0;padding:0;position:relative}
 .timeline::before{content:"";position:absolute;left:27px;top:10px;bottom:10px;width:4px;background:#d4def3;border-radius:4px}
 .timeline .fill{position:absolute;left:27px;top:10px;width:4px;height:0;background:linear-gradient(var(--teal),var(--blue));border-radius:4px;transition:height 1.8s ease}
 .timeline.in .fill{height:calc(100% - 20px)}
@@ -213,7 +208,6 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(247,251,250,.94);bac
 .timeline.in li:nth-of-type(2) b,.timeline.in li:nth-of-type(2) p{transition-delay:.4s}
 .timeline.in li:nth-of-type(3) b,.timeline.in li:nth-of-type(3) p{transition-delay:.8s}
 .timeline.in li:nth-of-type(4) b,.timeline.in li:nth-of-type(4) p{transition-delay:1.2s}
-@media(max-width:860px){.ipa-grid{grid-template-columns:1fr}}
 
 /* Équipe */
 .team{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -340,7 +334,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  .reveal,.timeline li b,.timeline li p{opacity:1!important;transform:none!important;transition:none!important}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important}
   .lg-draw{stroke-dashoffset:0}.lg-heart{transform:none}.lg-t1,.lg-t2{opacity:1}.lg-t2{letter-spacing:7px}.petal,.lg-ecg{display:none}
@@ -374,11 +368,10 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
     </a>
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">☰</button>
     <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="#equipe" data-filter="all">L'équipe et les rendez-vous</a>
       <a href="#reconnaissances">La MSP</a>
       <a href="#comprendre">Comprendre</a>
       <a href="#actualites">Actualités</a>
-      <a href="#ipa">IPA</a>
-      <a href="#equipe">L'équipe</a>
       <a href="#infos">Infos</a>
       <a href="#sante">Votre santé</a>
       <a href="#localisation">Accès</a>
@@ -401,7 +394,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
         <h1>Vos soignants <span class="rot" id="rot">réunis</span><br><span class="accent">au cœur de Racquinghem.</span></h1>
         <p>La Maison de Santé Pluriprofessionnelle Les Bruyères rassemble médecins généralistes, infirmière en pratique avancée, infirmières, kinésithérapeutes, diététicienne et orthoptistes autour d'un projet de santé commun, pour une prise en charge de qualité et sans rupture.</p>
         <div class="btns">
-          <a class="btn primary" href="#rdv">Prendre rendez-vous</a>
+          <a class="btn primary" href="#equipe" data-filter="all">Prendre rendez-vous</a>
           <a class="btn ghost" href="tel:+33321934343">☎ 03 21 93 43 43</a>
         </div>
       </div>
@@ -424,8 +417,8 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
     </div>
 
     <div class="quick" aria-label="Accès rapide">
-      <a href="#rdv"><span class="ico">📅</span><strong>Rendez-vous</strong><span>03 21 93 43 43 ou en ligne</span></a>
-      <a href="#ipa"><span class="ico">🩺</span><strong>IPA</strong><span>Tous les vendredis après-midi</span></a>
+      <a href="#equipe" data-filter="all"><span class="ico">📅</span><strong>Rendez-vous</strong><span>Voir les coordonnées de l’équipe</span></a>
+      <a href="#ipa" data-filter="ipa"><span class="ico">🩺</span><strong>IPA</strong><span>Le vendredi sur rendez-vous</span></a>
       <a href="#equipe" data-filter="diet"><span class="ico">🥕</span><strong>Diététicienne</strong><span>1<sup>er</sup> et 3<sup>e</sup> jeudi du mois</span></a>
       <a href="#localisation"><span class="ico">📍</span><strong>Nous trouver</strong><span>84 RD 943, Racquinghem</span></a>
       <a class="urg" href="tel:15"><span class="ico">🚑</span><strong>Urgence</strong><span>En dehors des horaires : appelez le 15</span></a>
@@ -433,10 +426,46 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
   </div>
 </section>
 
+<section class="team" id="equipe" aria-labelledby="team-title">
+  <div class="wrap">
+    <span class="eyebrow"><span class="num">01</span>Annuaire</span>
+    <h2 id="team-title">L'équipe de la maison de santé</h2>
+    <ol class="steps">
+      <li><b>1</b>Choisissez une profession</li>
+      <li><b>2</b>Contactez le professionnel par téléphone ou en ligne</li>
+    </ol>
+    <div class="search">
+      <label for="q" class="skip">Chercher un professionnel</label>
+      <input id="q" type="search" placeholder="Chercher un professionnel par son nom…" autocomplete="off">
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filtrer par profession"></div>
+    <template id="junior-info">
+      <aside class="callout" aria-labelledby="junior-title">
+        <h4 id="junior-title">Qu’est-ce qu’un docteur junior ?</h4>
+        <p>Un docteur junior en médecine générale est un médecin en dernière année de formation. Il reçoit les patients en consultation avec une autonomie progressive, sous la supervision d’un médecin généraliste maître de stage, qu’il peut solliciter si nécessaire.</p>
+      </aside>
+    </template>
+    <template id="ipa-info">
+      <details class="callout">
+        <summary><strong>Comment se déroule mon suivi avec l’IPA ?</strong></summary>
+        <p>Anaïs Pouille Boddaert assure le suivi des patients atteints de maladies chroniques ou en situation complexe, en lien étroit avec leur médecin traitant. Elle est aussi infirmière de santé publique dans le cadre du dispositif Asalée.</p>
+        <ol>
+        <li><p>J'accepte d'être suivi(e) par l'IPA, qui collabore avec mon médecin traitant, et je donne mon accord oral à ce dernier.</p></li>
+        <li><p>Sur orientation de mon médecin traitant, je prends rendez-vous avec l'IPA sur Doctolib pour ma prochaine consultation de suivi.</p></li>
+        <li><p>L'IPA me reçoit en consultation, m'examine, renouvelle mon traitement et peut prescrire des examens complémentaires. Elle informe mon médecin traitant des changements notables ou, si besoin, me programme un rendez-vous avec lui.</p></li>
+        <li><p>Je peux à tout moment décider de ne plus être suivi(e) par l'IPA. J'en informe simplement mon médecin traitant.</p></li>
+        </ol>
+      </details>
+    </template>
+    <div id="groups"></div>
+    <p class="empty" id="empty">Aucun professionnel ne correspond à votre recherche.</p>
+  </div>
+</section>
+
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 240 0 480 0 720 30 S 1200 60 1440 20 V60 H0Z" fill="#03686d"/></svg>
 <section class="reco" id="reconnaissances" aria-labelledby="reco-title">
   <div class="wrap">
-    <span class="eyebrow" style="color:#bfe7e6"><span class="num" style="color:#bfe7e6">01</span>Une structure reconnue</span>
+    <span class="eyebrow" style="color:#bfe7e6"><span class="num" style="color:#bfe7e6">02</span>Une structure reconnue</span>
     <h2 id="reco-title">Une maison de santé engagée et reconnue</h2>
     <p class="lead">Les Bruyères, ce n'est pas un simple regroupement de cabinets : c'est une équipe coordonnée, porteuse d'un projet de santé validé par les autorités sanitaires.</p>
     <div class="reco-grid">
@@ -474,7 +503,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
 
 <section id="comprendre" aria-labelledby="msp-title">
   <div class="wrap">
-    <span class="eyebrow"><span class="num">02</span>Comprendre</span>
+    <span class="eyebrow"><span class="num">03</span>Comprendre</span>
     <h2 id="msp-title">C'est quoi, une Maison de Santé Pluriprofessionnelle ?</h2>
     <p class="lead">Une MSP réunit des professionnels de santé libéraux de métiers différents qui ont choisi de travailler en équipe autour d'un projet de santé commun, au plus près des besoins des habitants.</p>
     <div class="msp-grid">
@@ -498,7 +527,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
 
 <section id="actualites" aria-labelledby="news-title" style="padding-top:0">
   <div class="wrap">
-    <span class="eyebrow"><span class="num">03</span>Actualités</span>
+    <span class="eyebrow"><span class="num">04</span>Actualités</span>
     <h2 id="news-title">La vie de la maison de santé</h2>
     <div class="news-grid">
       <article class="news reveal" style="--c:var(--blue)">
@@ -515,8 +544,8 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
       <article class="news reveal" style="--c:var(--teal-d)">
         <span class="tag">Nouveau métier</span>
         <h3>Une infirmière en pratique avancée</h3>
-        <p>Tous les vendredis après-midi, l'IPA assure le suivi des patients atteints de maladies chroniques, en lien étroit avec votre médecin traitant. Les rendez-vous se prennent sur Doctolib.</p>
-        <a class="lk" href="#ipa">En savoir plus sur le suivi IPA</a>
+        <p>Le vendredi, sur rendez-vous, l'IPA assure le suivi des patients atteints de maladies chroniques, en lien étroit avec votre médecin traitant. Les rendez-vous se prennent sur Doctolib.</p>
+        <a class="lk" href="#ipa" data-filter="ipa">En savoir plus sur le suivi IPA</a>
       </article>
       <article class="news reveal" style="--c:#7c4dc4">
         <span class="tag">Depuis juin 2025</span>
@@ -529,7 +558,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
 
 <section id="projet" aria-labelledby="proj-title" style="padding-top:0">
   <div class="wrap">
-    <span class="eyebrow"><span class="num">04</span>Notre projet de santé</span>
+    <span class="eyebrow"><span class="num">05</span>Notre projet de santé</span>
     <h2 id="proj-title">Une prise en charge coordonnée, à taille humaine</h2>
     <p class="lead">Grâce à son projet de santé, la Maison de Santé Les Bruyères vise à améliorer la qualité et la continuité des soins, en facilitant la coordination des actions entre les professionnels de santé signataires.</p>
     <div class="proj-grid">
@@ -554,59 +583,9 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
   </div>
 </section>
 
-<section class="ipa" id="ipa" aria-labelledby="ipa-title">
-  <div class="wrap">
-    <span class="eyebrow"><span class="num">05</span>Pratique avancée</span>
-    <h2 id="ipa-title" style="color:var(--blue)">Ma prise en charge par l'infirmière en pratique avancée</h2>
-    <div class="ipa-grid">
-      <div class="ipa-card reveal">
-        <span class="when"><i></i>Tous les vendredis après-midi</span>
-        <h3>Mme Anaïs Pouille Boddaert</h3>
-        <p>Infirmière en pratique avancée (IPA), elle assure le <strong>suivi clinique des patients atteints de maladies chroniques ou en situation complexe</strong>, en étroite collaboration avec les médecins de la maison de santé.</p>
-        <p>Elle est aussi infirmière de santé publique dans le cadre du dispositif <strong>Asalée</strong>.</p>
-        <p style="color:var(--muted);font-size:.95rem">L'IPA travaille en étroite collaboration avec votre médecin traitant, pour une meilleure prise en charge de votre santé.</p>
-        <p><strong>Prise de rendez-vous sur Doctolib.</strong></p>
-      </div>
-      <div>
-        <ol class="timeline" id="timeline">
-          <span class="fill" aria-hidden="true"></span>
-          <li><b>1</b><p>J'accepte d'être suivi(e) par l'IPA, qui collabore avec mon médecin traitant, et je donne mon accord oral à ce dernier.</p></li>
-          <li><b>2</b><p>Sur orientation de mon médecin traitant, je prends rendez-vous avec l'IPA sur Doctolib pour ma prochaine consultation de suivi.</p></li>
-          <li><b>3</b><p>L'IPA me reçoit en consultation, m'examine, renouvelle mon traitement et peut prescrire des examens complémentaires. Elle informe mon médecin traitant des changements notables ou, si besoin, me programme un rendez-vous avec lui.</p></li>
-          <li><b>4</b><p>Je peux à tout moment décider de ne plus être suivi(e) par l'IPA. J'en informe simplement mon médecin traitant.</p></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="team" id="equipe" aria-labelledby="team-title">
-  <div class="wrap">
-    <span class="eyebrow"><span class="num">06</span>Annuaire</span>
-    <h2 id="team-title">L'équipe de la maison de santé</h2>
-    <ol class="steps">
-      <li><b>1</b>Choisissez une profession</li>
-      <li><b>2</b>Contactez le professionnel par téléphone ou en ligne</li>
-    </ol>
-    <div class="search">
-      <label for="q" class="skip">Chercher un professionnel</label>
-      <input id="q" type="search" placeholder="Chercher un professionnel par son nom…" autocomplete="off">
-    </div>
-    <div class="chips" id="chips" role="group" aria-label="Filtrer par profession"></div>
-    <template id="junior-info">
-      <aside class="callout" aria-labelledby="junior-title">
-        <h4 id="junior-title">Qu’est-ce qu’un docteur junior ?</h4>
-        <p>Un docteur junior en médecine générale est un médecin en dernière année de formation. Il reçoit les patients en consultation avec une autonomie progressive, sous la supervision d’un médecin généraliste maître de stage, qu’il peut solliciter si nécessaire.</p>
-      </aside>
-    </template>
-    <div id="groups"></div>
-    <p class="empty" id="empty">Aucun professionnel ne correspond à votre recherche.</p>
-  </div>
-</section>
-
 <section id="infos" aria-labelledby="infos-title">
   <div class="wrap">
-    <span class="eyebrow"><span class="num">07</span>Infos pratiques</span>
+    <span class="eyebrow"><span class="num">06</span>Infos pratiques</span>
     <h2 id="infos-title">Rendez-vous et démarches</h2>
     <div class="info-grid">
       <div class="box reveal" id="rdv">
@@ -640,7 +619,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
 
 <section class="sante" id="sante" aria-labelledby="sante-title">
   <div class="wrap">
-    <span class="eyebrow"><span class="num">08</span>Prévention</span>
+    <span class="eyebrow"><span class="num">07</span>Prévention</span>
     <h2 id="sante-title">Votre santé</h2>
     <p class="lead">Vaccins, dépistages, examens à ne pas oublier : nos repères pour prendre soin de votre santé à chaque âge de la vie, et qui peut vous accompagner aux Bruyères.</p>
 
@@ -716,7 +695,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
       <div class="tiles">
         <div class="tile"><h4>Tension artérielle</h4><p>Au moins une fois par an, plus souvent en cas d'hypertension ou de facteurs de risque.</p></div>
         <div class="tile"><h4>Mon bilan prévention</h4><p>Un rendez-vous gratuit à 18–25, 45–50, 60–65 et 70–75 ans : mode de vie, vaccins, dépistages.</p></div>
-        <div class="tile"><h4>Diabète</h4><p>Glycémie à jeun dès 45 ans, plus tôt en cas de surpoids ou d'antécédents. Diabétique ? Notre infirmière Asalée et notre IPA vous accompagnent dans votre suivi. <a href="#ipa">En savoir plus</a></p></div>
+        <div class="tile"><h4>Diabète</h4><p>Glycémie à jeun dès 45 ans, plus tôt en cas de surpoids ou d'antécédents. Diabétique ? Notre infirmière Asalée et notre IPA vous accompagnent dans votre suivi. <a href="#ipa" data-filter="ipa">En savoir plus</a></p></div>
         <div class="tile"><h4>Cholestérol</h4><p>Un bilan sanguin régulier, adapté avec votre médecin à votre risque cardiovasculaire.</p></div>
         <div class="tile"><h4>Peau</h4><p>Un grain de beauté qui change de forme, de couleur ou de taille doit être montré à votre médecin.</p></div>
         <div class="tile"><h4>Dos</h4><p>Lombalgie : restez actif. Votre médecin et nos kinésithérapeutes vous accompagnent. <a href="#equipe" data-filter="kine">Nos kinés</a></p></div>
@@ -786,7 +765,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
 
 <section id="localisation" aria-labelledby="loc-title">
   <div class="wrap">
-    <span class="eyebrow"><span class="num">09</span>Localisation</span>
+    <span class="eyebrow"><span class="num">08</span>Localisation</span>
     <h2 id="loc-title">Où nous trouver</h2>
     <div class="loc-grid">
       <div class="box">
@@ -834,7 +813,7 @@ dialog.lb button{position:absolute;top:10px;right:10px;width:40px;height:40px;bo
         <ul>
           <li><a href="#reconnaissances">La MSP</a></li>
           <li><a href="#comprendre">C'est quoi une MSP ?</a></li>
-          <li><a href="#ipa">Infirmière en pratique avancée</a></li>
+          <li><a href="#ipa" data-filter="ipa">Infirmière en pratique avancée</a></li>
           <li><a href="#equipe">L'équipe</a></li>
           <li><a href="#infos">Infos pratiques</a></li>
           <li><a href="#sante">Votre santé</a></li>
@@ -870,8 +849,8 @@ const TEAM = [
     {n:"Dr Christian Cuvelier", t:"03 21 93 43 43", s:1, tp:1},
     {n:"Dr Robin Tillie", t:"03 21 93 43 43", s:1, tp:1},
     {n:"Dr Pierre Le Tiec", job:"Docteur junior en médecine générale"}]},
-  {id:"ipa", label:"Infirmière en pratique avancée", rdv:"Le vendredi après-midi · rendez-vous sur Doctolib", people:[
-    {n:"Mme Anaïs Pouille Boddaert", job:"IPA · infirmière de santé publique Asalée", p:"Présente tous les vendredis après-midi", t:"06 74 97 47 10", note:"Rendez-vous sur Doctolib", s:1}]},
+  {id:"ipa", label:"Infirmière en pratique avancée", rdv:"Le vendredi · rendez-vous sur Doctolib", people:[
+    {n:"Mme Anaïs Pouille Boddaert", job:"IPA · infirmière de santé publique Asalée", p:"Le vendredi sur rendez-vous", t:"06 74 97 47 10", note:"Rendez-vous sur Doctolib", s:1}]},
   {id:"ide", label:"Infirmières libérales", rdv:"Rendez-vous par téléphone", people:[
     {n:"Mme Laurianne Celers-Blanquart", t:"06 49 01 82 28"},
     {n:"Mme Cécile Sepieter", t:"06 03 99 65 61"}]},
@@ -913,7 +892,7 @@ function render(){
     if(current.size&&!current.has(g.id))return;
     const ppl=g.people.filter(p=>!term||norm(p.n).includes(term)||norm(p.job||JOB[g.id]).includes(term)||norm(g.label).includes(term));
     if(!ppl.length)return;shown+=ppl.length;
-    const sec=document.createElement("div");sec.className="group";sec.style.setProperty("--c",COL[g.id]);
+    const sec=document.createElement("div");sec.className="group";if(g.id==="ipa")sec.id="ipa";sec.style.setProperty("--c",COL[g.id]);
     sec.innerHTML=`<div class="group-head"><h3><span class="gi" aria-hidden="true">${ICON[g.id]}</span>${esc(g.label)}</h3><span class="rdv">${esc(g.rdv)}</span></div><div class="cards">${ppl.map(p=>`
       <article class="pro">
         <div class="who"><div class="avatar" aria-hidden="true">${ICON[g.id]}</div><div><h4>${esc(p.n)}</h4><div class="job">${esc(p.job||JOB[g.id])}</div></div></div>
@@ -926,7 +905,7 @@ function render(){
           ${p.t?`<a href="tel:+33${p.t.replace(/\s/g,"").slice(1)}">☎ ${esc(p.t)}</a>`:""}
           ${p.m?`<a href="mailto:${p.m}">✉ ${esc(p.m)}</a>`:""}
         </div>
-      </article>`).join("")}</div>${g.id === "med" ? document.getElementById("junior-info").innerHTML : ""}`;
+      </article>`).join("")}</div>${g.id === "med" ? document.getElementById("junior-info").innerHTML : g.id === "ipa" ? document.getElementById("ipa-info").innerHTML : ""}`;
     groups.appendChild(sec);
   });
   document.getElementById("empty").style.display=shown?"none":"block";
@@ -942,7 +921,7 @@ menu.querySelectorAll("a").forEach(a=>a.onclick=()=>{menu.classList.remove("open
 let fs=1;document.getElementById("fontUp").onclick=()=>{fs=fs>=1.3?1:fs+.15;document.documentElement.style.setProperty("--fs",fs+"rem")};
 // Apparitions
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll(".reveal,#timeline").forEach(el=>io.observe(el));
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 document.querySelectorAll(".facts,.news-grid,.pillars,.reco-grid,.info-grid").forEach(p=>[...p.children].forEach((c,i)=>c.style.transitionDelay=(i*0.09)+"s"));
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 // Mot animé du titre
@@ -981,7 +960,7 @@ const tabs=[...document.querySelectorAll('.tab')];
 function selectTab(tb){tabs.forEach(x=>{const on=x===tb;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).classList.toggle('active',on)})}
 tabs.forEach((tb,i)=>{tb.onclick=()=>selectTab(tb);tb.onkeydown=e=>{let j=null;if(e.key==='ArrowRight')j=(i+1)%tabs.length;if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;if(j!==null){e.preventDefault();tabs[j].focus();selectTab(tabs[j])}}});
 // Liens vers une profession de l'annuaire
-document.querySelectorAll('[data-filter]').forEach(a=>a.addEventListener('click',()=>{current=new Set([a.dataset.filter]);q.value='';render()}));
+document.querySelectorAll('[data-filter]').forEach(a=>a.addEventListener('click',()=>{current=a.dataset.filter==="all"?new Set():new Set([a.dataset.filter]);q.value='';render()}));
 document.getElementById("y").textContent=new Date().getFullYear();
 </script>
 </body>
